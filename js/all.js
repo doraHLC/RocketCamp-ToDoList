@@ -1,7 +1,6 @@
 const apiUrl = `https://todoo.5xcamp.us/`;
 
 let jwt = '';
-// axios.defaults.headers.common["Authorization"] = jwt;
 
 let toggleTab = "all";
 const listItem = document.querySelector('.todoList_item');
@@ -111,7 +110,6 @@ function signUp() {
                 "password": signUpPassword.value
             }
         }).then(function (response) {
-            // console.log(response);
             jwt = response.headers.authorization;
 
             if (response.data.message == '註冊成功') {
@@ -124,7 +122,6 @@ function signUp() {
                 todoListPage.setAttribute("style", "display:block;")
 
                 init();
-                // console.log(response.data.nickname);
                 userNickname = response.data.nickname;
                 const todoUser = document.querySelector('.todoUser');
                 todoUser.textContent = `${userNickname}的代辦`;
@@ -203,8 +200,6 @@ function addTodolist() {
         });
         return;
     }
-
-
     axios.post(`${apiUrl}todos`,
         {
             todo: {
@@ -290,7 +285,6 @@ function tabChange(e) {
 listItem.addEventListener('click', delTodolist);
 
 function delTodolist(e) {
-    // console.log(e.target.closest('li').dataset.id);
     const id = e.target.closest('li').dataset.id;
     if (e.target.getAttribute("data-id") !== `${id}` || e.target.className !== 'fa fa-times del') {
         return;
@@ -328,11 +322,9 @@ function listClearAll() {
             const doneList = response.data.todos.filter(function (item) {
                 return (item.completed_at !== null)
             });
-            // console.log(doneList);
             const urls = doneList.map(function (item) {
                 return (`${apiUrl}todos/${item.id}`)
             });
-            // console.log(urls);
             Swal.fire({
                 title: '清除全部已完成項目嗎?',
                 text: "清除後將無法回復!",
@@ -372,9 +364,6 @@ function listClearAll() {
 listItem.addEventListener('click', editTodolist);
 
 function editTodolist(e) {
-    // console.log(e.target.getAttribute("data-id"))
-    // console.log(e);
-    // console.log(e.target.closest('li').dataset.id);
     const id = e.target.closest('li').dataset.id;
     if (e.target.getAttribute("data-id") !== `${id}` || e.target.className !== 'fa-solid fa-pen-to-square edit') {
         return;
@@ -391,7 +380,6 @@ function editTodolist(e) {
             }
         }
     }).then(function (editTxt) {
-        // console.log(editTxt.value);
         axios.put(`${apiUrl}/todos/${id}`,
             {
                 "todo": {
