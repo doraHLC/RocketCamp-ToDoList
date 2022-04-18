@@ -1,0 +1,180 @@
+body {
+    font-family: "Noto Sans TC";
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.logoImg {
+    margin-bottom: 16px;
+}
+
+.vhContainer {
+    height: 100vh;
+}
+
+.bg-yellow {
+    background-color: $colors-secondary;
+}
+
+.bg-half {
+    background-image: linear-gradient(175deg, $colors-secondary 60%, $colors-success 40%);
+}
+
+.conatiner {
+    margin: 0 auto;
+    padding: 87px 32px;
+
+    @include mobile {
+        padding: 18px 32px;
+    }
+}
+
+.side {
+    width: 386px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include mobile {
+        width: 100%;
+    }
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 32px 0 32px;
+
+    @include mobile {
+        margin-bottom: 16px;
+    }
+
+    h1 a {
+        width: 243px;
+        height: 39px;
+        background: url(https://upload.cc/i1/2022/03/23/8vTzYG.png) no-repeat;
+        @include hide-text;
+    }
+
+    ul {
+        display: flex;
+        font-size: $h6-font-size;
+
+        li {
+            @include mobile {
+                margin-top: 11px;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: $colors-primary;
+            margin-left: 24px;
+            font-weight: bold;
+
+            @include mobile {
+                margin-left: 0;
+            }
+
+            &:hover {
+                color: #d87355;
+            }
+        }
+
+        .todoUser {
+            cursor: pointer;
+            @include mobile {
+                display: none;
+            }
+        }
+    }
+}
+
+.d-m-n {
+    @include mobile {
+        display: none;
+    }
+}
+
+//form
+.formControls {
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+
+    @include mobile {
+        margin-left: 0;
+    }
+
+    .formControls_txt {
+        font-size: $h4-font-size;
+        font-weight: bold;
+        margin-bottom: 24px;
+
+        @include mobile {
+            font-size: $h5-font-size;
+            text-align: center;
+        }
+    }
+
+    .formControls_label {
+        font-size: $font-size-sm;
+        font-weight: bold;
+        margin: 16px 0 4px 0;
+    }
+
+    .formControls_input {
+        font-weight: normal;
+        border: none;
+        border-radius: 10px;
+        width: 304px;
+        padding: 12px 16px;
+        margin: 4px 0;
+
+        &:focus {
+            outline: 3px solid $colors-success;
+        }
+
+        &::placeholder {
+            color: $colors-info;
+        }
+    }
+
+    .formControls_btnSubmit {
+        width: 128px;
+        height: 48px;
+        border: none;
+        border-radius: 10px;
+        background: $colors-primary;
+        color: $colors-success;
+        align-self: center;
+        margin: 24px 0;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        font-size: $h6-font-size;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    span {
+        margin: 4px 0 16px 0;
+        color: #d87355;
+        font-size: $font-size-sm;
+    }
+
+    .formControls_btnLink {
+        display: block;
+        color: $colors-primary;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center;
+    }
+}
