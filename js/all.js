@@ -279,7 +279,6 @@ listTab.addEventListener('click', tabChange);
 
 function tabChange(e) {
     toggleTab = e.target.dataset.tab;
-
     tabs.forEach(function (item) {
         item.classList.remove("active");
     })
