@@ -1,6 +1,7 @@
 const apiUrl = `https://todoo.5xcamp.us/`;
 
 let jwt = '';
+// axios.defaults.headers.common["Authorization"] = jwt;
 
 let toggleTab = "all";
 const listItem = document.querySelector('.todoList_item');
@@ -178,7 +179,6 @@ function getTodolist() {
             }).length;
 
             listTotal.textContent = doneListLength;
-
             updateList(listData);
         })
         .catch(function (error) {
@@ -200,6 +200,7 @@ function addTodolist() {
         });
         return;
     }
+
     axios.post(`${apiUrl}todos`,
         {
             todo: {
@@ -274,6 +275,7 @@ listTab.addEventListener('click', tabChange);
 
 function tabChange(e) {
     toggleTab = e.target.dataset.tab;
+
     tabs.forEach(function (item) {
         item.classList.remove("active");
     })
@@ -290,7 +292,7 @@ function delTodolist(e) {
         return;
     }
 
-    axios.delete(`${apiUrl}/todos/${id}`,
+    axios.delete(`${apiUrl}todos/${id}`,
         {
             headers: {
                 'Authorization': jwt,
@@ -380,7 +382,7 @@ function editTodolist(e) {
             }
         }
     }).then(function (editTxt) {
-        axios.put(`${apiUrl}/todos/${id}`,
+        axios.put(`${apiUrl}todos/${id}`,
             {
                 "todo": {
                     "content": editTxt.value.trim()
@@ -405,7 +407,7 @@ const logOut = document.querySelector('.js-logOut');
 
 logOut.addEventListener('click', function (e) {
     e.preventDefault();
-    axios.delete(`${apiUrl}/users/sign_out`,
+    axios.delete(`${apiUrl}users/sign_out`,
         {
             headers: {
                 'Authorization': jwt,
